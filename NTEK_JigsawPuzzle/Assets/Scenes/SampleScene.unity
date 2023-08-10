@@ -626,8 +626,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a3fc2ce6aaa1b84097123a64828f62c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightColor: {r: 1, g: 1, b: 1, a: 1}
-  selectionColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightColor: {r: 1, g: 1, b: 1, a: 0.7254902}
+  selectionColor: {r: 1, g: 1, b: 1, a: 0.7254902}
 --- !u!1 &281028030
 GameObject:
   m_ObjectHideFlags: 0
