@@ -14,6 +14,12 @@ public class Selection : MonoBehaviour
     private Transform selection;
     private RaycastHit2D raycastHit;
 
+    private void Start()
+    {
+        originalColorHighlight = Color.white; // Default color
+        originalColorSelection = Color.white; // Default color
+    }
+
     void Update()
     {
         // Highlight
@@ -53,7 +59,7 @@ public class Selection : MonoBehaviour
                 selection = raycastHit.transform;
                 if (selection.GetComponent<SpriteRenderer>().color != selectionColor)
                 {
-                    originalColorSelection = originalColorHighlight;
+                    originalColorSelection = selection.GetComponent<SpriteRenderer>().color;
                     selection.GetComponent<SpriteRenderer>().color = selectionColor;
                 }
                 highlight = null;
@@ -90,5 +96,4 @@ public class Selection : MonoBehaviour
         // Update the scale of the GameObject
         objToFlip.localScale = currentScale;
     }
-
 }
