@@ -9,6 +9,18 @@ public class Tile : MonoBehaviour
     public Color occupiedColor;
     public Color vacantColor;
 
+    private void Update()
+    {
+        if (occupyingObjects.Count > 0)
+        {
+            GetComponent<SpriteRenderer>().color = occupiedColor;
+        }
+        else 
+        {
+            GetComponent<SpriteRenderer>().color = vacantColor;
+        }
+    }
+
     public bool IsOccupied()
     {
         return occupyingObjects.Count > 0;
@@ -16,17 +28,17 @@ public class Tile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Selectable") && !occupyingObjects.Contains(other.gameObject))
+        if (other.CompareTag("Selectable"))
         {
             occupyingObjects.Add(other.gameObject);
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    private void OnTriggerExit2D(Collider2D exit)
     {
-        if (other.CompareTag("Selectable") && occupyingObjects.Contains(other.gameObject))
+        if (exit.CompareTag("Selectable"))
         {
-            occupyingObjects.Remove(other.gameObject);
+            occupyingObjects.Remove(exit.gameObject);
         }
     }
 }

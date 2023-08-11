@@ -76,7 +76,7 @@ public class Selection : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1) && selection != null)
         {
-            selection.Rotate(0f, 0f, -90f); // Rotate the selected GameObject by 90 degrees around the Y-axis
+            selection.Rotate(0f, 0f, -15f); // Rotate the selected GameObject by 90 degrees around the Y-axis
         }
 
         if (Input.GetMouseButtonDown(2) && selection != null)
