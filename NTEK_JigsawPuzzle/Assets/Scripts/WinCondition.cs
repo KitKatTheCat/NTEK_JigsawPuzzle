@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WinCondition : MonoBehaviour
 {
@@ -32,7 +33,7 @@ public class WinCondition : MonoBehaviour
 
         if (allTilesOccupied)
         {
-            Debug.Log("You win!"); // You can replace this with your win condition logic
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 }

@@ -13,9 +13,9 @@ public class Dragging : MonoBehaviour
     public Vector2 InitialPos { get; private set; }
     private bool isDragged = false;
     [SerializeField]private int isWalledCounter;
-    // [SerializeField] private AudioSource initialClickSound;
-    // [SerializeField] private AudioSource finalClickSound;
-    // [SerializeField] private AudioSource failClickSound;
+    [SerializeField] private AudioSource initialClickSound;
+    [SerializeField] private AudioSource finalClickSound;
+    [SerializeField] private AudioSource failClickSound;
 
     public bool IsDragged => isDragged; // Add a property to access the dragging flag
 
@@ -26,7 +26,7 @@ public class Dragging : MonoBehaviour
 
     private void OnMouseDown()
     {
-        // initialClickSound.Play();
+        initialClickSound.Play();
         InitialPos = transform.position;
         isDragged = true;
         mouseDragStartPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -47,12 +47,12 @@ public class Dragging : MonoBehaviour
 
         if (isWalledCounter > 0) // Only trigger return logic when colliding with walls
         {
-            // failClickSound.Play();
+            failClickSound.Play();
             transform.position = InitialPos;
         }
         else
         {
-            // finalClickSound.Play();
+            finalClickSound.Play();
         }
 
         dragEndedCallback(this);

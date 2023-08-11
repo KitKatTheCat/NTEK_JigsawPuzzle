@@ -12,10 +12,16 @@ public class PauseMenu : MonoBehaviour
     public GameObject TrayHolder;
     public GameObject SelectionHolder;
     [SerializeField] private AudioSource BGM;
+    [SerializeField] private AudioSource buttonTrigger;
 
     public GameObject InstructionsHolder;
     public GameObject pauseMenuUI;
     // Update is called once per frame
+
+    private void Start()
+    {
+        Time.timeScale = 0f;
+    }
 
     void Update()
     {
@@ -23,10 +29,12 @@ public class PauseMenu : MonoBehaviour
         {
             if (GameIsPaused)
             {
+                buttonTrigger.Play();
                 Resume();
             }
             else
             {
+                buttonTrigger.Play();
                 Pause();
             }
         }

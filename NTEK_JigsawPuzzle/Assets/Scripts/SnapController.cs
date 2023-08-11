@@ -8,7 +8,6 @@ public class SnapController : MonoBehaviour
     public List<Dragging> draggingObjects;
     public float snapRange = 0.5f;
     private Dragging dragged;
-    private bool isCollidingWithWall = false;
 
     private void Start()
     {
@@ -55,34 +54,7 @@ public class SnapController : MonoBehaviour
 
         if (closestSnapPoint != null && closestDistance <= snapRange)
         {
-            // Check for colliding objects using PolygonCollider2D
-            PolygonCollider2D pieceCollider = dragging.GetComponent<PolygonCollider2D>();
-            ContactFilter2D contactFilter = new ContactFilter2D();
-            contactFilter.useTriggers = false;
-            Collider2D[] results = new Collider2D[5]; // Adjust the size based on the expected number of collisions
-
-            int numCollisions = pieceCollider.OverlapCollider(contactFilter, results);
-
-            // Check if any of the colliders are walls
-            isCollidingWithWall = false;
-            for (int i = 0; i < numCollisions; i++)
-            {
-                if (results[i].CompareTag("Wall") || results[i].CompareTag("Selectable"))
-                {
-                    isCollidingWithWall = true;
-                    break;
-                }
-            }
-
-            if (!isCollidingWithWall)
-            {
-                dragging.transform.position = closestSnapPoint.position;
-            }
-            else
-            {
-                // Colliding with a wall, move the dragged piece back to its initial position
-                dragging.transform.position = dragging.InitialPos;
-            }
+            dragging.transform.position = closestSnapPoint.position;
         }
     }
 }
