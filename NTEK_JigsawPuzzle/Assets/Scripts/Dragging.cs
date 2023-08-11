@@ -16,12 +16,13 @@ public class Dragging : MonoBehaviour
     [SerializeField] private AudioSource initialClickSound;
     [SerializeField] private AudioSource finalClickSound;
     [SerializeField] private AudioSource failClickSound;
-
+    private WinCondition winCondition; 
     public bool IsDragged => isDragged; // Add a property to access the dragging flag
 
     private void Start()
     {
         InitialPos = transform.position;
+        winCondition = FindObjectOfType<WinCondition>();
     }
 
     private void OnMouseDown()
@@ -53,6 +54,7 @@ public class Dragging : MonoBehaviour
         else
         {
             finalClickSound.Play();
+            winCondition.CheckWinCondition();
         }
 
         dragEndedCallback(this);

@@ -13,12 +13,7 @@ public class WinCondition : MonoBehaviour
         tile = FindObjectOfType<Tile>();
     }
 
-    private void Update()
-    {
-        CheckWinCondition();
-    }
-
-    private void CheckWinCondition()
+    public void CheckWinCondition()
     {
         bool allTilesOccupied = true; // Assume all tiles are occupied initially
 
